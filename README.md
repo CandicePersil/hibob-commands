@@ -20,3 +20,4 @@ Use pipenv
 -- pipenv shell
 -- pip install pydantic
 -- pip install pytest
+-- pip install requests
