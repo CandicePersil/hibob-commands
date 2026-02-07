@@ -18,3 +18,5 @@ Use pipenv
 -- pipx install pipenv
 -- pipenv install
 -- pipenv shell
+-- pip install pydantic
+-- pip install pytest
