@@ -21,3 +21,9 @@ Use pipenv
 -- pip install pydantic
 -- pip install pytest
 -- pip install requests
+
+## Run tests
+```
+cd ./src
+pytest ./test/integration/
+```
