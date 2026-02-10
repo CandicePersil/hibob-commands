@@ -1,17 +1,23 @@
-from models.employees import CompanyEmployees, Employee, Work
+from models.employees import CompanyEmployees, Employee, Work, Payroll, Employment, Root
 
 
 def test_validate_employee_data() -> None:
     # GIVEN
     input = {
-        "firstName": "Noemie",
-        "surname": "Star",
-        "work": {
-            "startDate": "10/01/2026",
-            "contractType": "permanent",
-            "title": "Software engineer",
-            "site": "Paris",
+        "payroll": {
+                "employment": {
+                        "type": "Permanent",
+                }
         },
+        "work": {
+                "startDate": "2025-10-02",
+                "site": "France"
+        },
+        "root" : {
+            "surname": "Star",
+            "firstName": "Noemie",
+            "email": "noemie.start@random.ex"
+        }
     }
 
     # WHEN
@@ -19,28 +25,40 @@ def test_validate_employee_data() -> None:
 
     # THEN
     assert employee == Employee(
-        firstName=input["firstName"],
-        surname=input["surname"],
+        payroll=Payroll(
+            employment=Employment(
+                type=input["payroll"]["employment"]["type"],
+            )
+        ),
         work=Work(
             startDate=input["work"]["startDate"],
-            contractType=input["work"]["contractType"],
-            title=input["work"]["title"],
             site=input["work"]["site"],
+        ),
+        root=Root(
+            firstName=input["root"]["firstName"],
+            surname=input["root"]["surname"],
+            email=input["root"]["email"],
         ),
     )
 
 
-def test_validate_multiple_employees_date() -> None:
+def test_validate_multiple_employees_data() -> None:
     # GIVEN
     input = {
-        "firstName": "Noemie",
-        "surname": "Star",
-        "work": {
-            "startDate": "10/01/2026",
-            "contractType": "permanent",
-            "title": "Software engineer",
-            "site": "Paris",
+        "payroll": {
+                "employment": {
+                        "type": "Permanent",
+                }
         },
+        "work": {
+                "startDate": "2025-10-02",
+                "site": "France"
+        },
+        "root" : {
+            "surname": "Star",
+            "firstName": "Noemie",
+            "email": "noemie.star@example.ex",
+        }
     }
 
     list_of_employees: list[Employee] = []
