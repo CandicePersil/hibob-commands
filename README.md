@@ -17,16 +17,9 @@ Intall pipenv
 -- pipx install pipenv
 -- pipenv install
 ```
-Activate env
+Activate virtual env
 ```
 -- pipenv shell
-```
-Install dependences
-```
--- pip install dotenv
--- pip install pydantic
--- pip install pytest
--- pip install requests
 ```
 
 ## Run command
@@ -38,14 +31,17 @@ SERVICE_ID=...
 SERVICE_PASSWORD=...
 ```
 
+No need to activate the virtual env to run the commands.
 ```
 cd ./src
-python main.py
+pipenv run python main.py
 ```
-It should generate 
+It should generate a result file in a results folder.
+File format `employees_{YYYYMMDD}.csv` where `{YYYYMMDD}` is the date of the file generation.
 
 ## Run tests
 ```
 cd ./src
-pytest ./test/integration/
+pipenv run pytest ./test/integration
 ```
+No need to activate the virtual env to run the tests.
