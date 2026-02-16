@@ -21,23 +21,23 @@ class Employment(BaseModel):
 class Payroll(BaseModel):
     employment: Employment = Field()
 
-class Root(BaseModel):
-    first_name: str = Field(alias="firstName")
-    last_name: str = Field(alias="surname")
-    email: str = Field()
+class Custom(BaseModel):
+    first_name: str = Field(alias="field_1725354995510")
+    last_name: str = Field(alias="field_1725355007237")
 
 class Employee(BaseModel):
     payroll: Payroll = Field()
     work: Work = Field()
-    root: Root = Field()
+    custom: Custom = Field()
+    email: str = Field()
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler: SerializerFunctionWrapHandler) -> dict[str, object]:
         serialized = handler(self)
         return {
-            "email": self.root.email,
-            "first_name": self.root.first_name,
-            "last_name": self.root.last_name,
+            "email": self.email,
+            "first_name": self.custom.first_name,
+            "last_name": self.custom.last_name,
             "start_date": serialized["work"]["start_date"],
             "end_date": None,
             "contract_type": self.payroll.employment.contract_type,

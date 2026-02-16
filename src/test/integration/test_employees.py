@@ -1,4 +1,11 @@
-from models.employees import CompanyEmployees, Employee, Work, Payroll, Employment, Root
+from models.employees import (
+    CompanyEmployees,
+    Custom,
+    Employee,
+    Employment,
+    Payroll,
+    Work,
+)
 
 
 def test_validate_employee_data() -> None:
@@ -9,15 +16,15 @@ def test_validate_employee_data() -> None:
                         "type": "Permanent",
                 }
         },
+        "custom": {
+                "field_1725354995510": "Noemie",
+                "field_1725355007237": "Star",
+        },
+        "email": "noemie.start@random.ex",
         "work": {
                 "startDate": "2025-10-02",
                 "site": "France"
         },
-        "root" : {
-            "surname": "Star",
-            "firstName": "Noemie",
-            "email": "noemie.start@random.ex"
-        }
     }
 
     # WHEN
@@ -34,11 +41,11 @@ def test_validate_employee_data() -> None:
             startDate=input["work"]["startDate"],
             site=input["work"]["site"],
         ),
-        root=Root(
-            firstName=input["root"]["firstName"],
-            surname=input["root"]["surname"],
-            email=input["root"]["email"],
+        custom=Custom(
+            field_1725354995510=input["custom"]["field_1725354995510"],
+            field_1725355007237=input["custom"]["field_1725355007237"],
         ),
+        email=input["email"],
     )
 
 
@@ -50,15 +57,15 @@ def test_validate_multiple_employees_data() -> None:
                         "type": "Permanent",
                 }
         },
+        "custom": {
+                "field_1725354995510": "Noemie",
+                "field_1725355007237": "Star",
+        },
+        "email": "noemie.start@random.ex",
         "work": {
                 "startDate": "2025-10-02",
                 "site": "France"
         },
-        "root" : {
-            "surname": "Star",
-            "firstName": "Noemie",
-            "email": "noemie.star@example.ex",
-        }
     }
 
     list_of_employees: list[Employee] = []
@@ -72,21 +79,21 @@ def test_validate_multiple_employees_data() -> None:
 
     expected_employees = [
         Employee(
-        payroll=Payroll(
-            employment=Employment(
-                type=input["payroll"]["employment"]["type"],
-            )
-        ),
-        work=Work(
-            startDate=input["work"]["startDate"],
-            site=input["work"]["site"],
-        ),
-        root=Root(
-            firstName=input["root"]["firstName"],
-            surname=input["root"]["surname"],
-            email=input["root"]["email"],
-        ),
-    )
+            payroll=Payroll(
+                employment=Employment(
+                    type=input["payroll"]["employment"]["type"],
+                )
+            ),
+            work=Work(
+                startDate=input["work"]["startDate"],
+                site=input["work"]["site"],
+            ),
+            custom=Custom(
+                field_1725354995510=input["custom"]["field_1725354995510"],
+                field_1725355007237=input["custom"]["field_1725355007237"],
+            ),
+            email=input["email"],
+        )
         for i in range_of_employees
     ]
 
@@ -107,11 +114,11 @@ def test_extract_employees_data() -> None:
                     startDate="2025-10-02",
                     site="Paris",
                 ),
-                root=Root(
-                    firstName="Noemie",
-                    surname="Star",
-                    email="noemie.star@example.ex",
+                custom=Custom(
+                    field_1725354995510="Noemie",
+                    field_1725355007237="Star",
                 ),
+                email="noemie.star@example.ex",
             ),
             Employee(
                 payroll=Payroll(
@@ -123,11 +130,11 @@ def test_extract_employees_data() -> None:
                     startDate="2025-10-01",
                     site="London",
                 ),
-                root=Root(
-                    firstName="Mimi",
-                    surname="Renolds",
-                    email="mimi.renolds@example.ex",
+                custom=Custom(
+                    field_1725354995510="Mimi",
+                    field_1725355007237="Renolds",
                 ),
+                email="mimi.renolds@example.ex",
             ), 
         ]
     )
