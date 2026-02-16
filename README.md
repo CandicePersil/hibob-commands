@@ -1,17 +1,13 @@
-# hibob-commands
-HiBob commands including connection to HiBob API and data formating.
+# Employees manager
+Employees manager including connection to HiBob API, data formating and other functionalities.
 
 ## In short
 ### Need
 Display list of employees.
-Display list of employees with name, surname, title, start date,
-end date and type of contract.
+Display list of employees with name, surname, email, title, start date and type of contract.
 Download list of employees.
-
-### Action plan
-Connection to HiBob api.
-Get raw data.
-Format data.
+Format the list according to the specifications of the platform ingesting the data.
+Compare the platform's existing data with the new provided data.
 
 ## Environment setp up
 Use pipenv
