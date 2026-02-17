@@ -8,6 +8,8 @@ pytest = "*"
 requests = "*"
 dotenv = "*"
 pydantic = "*"
+xlrd = "*"
+ruff = "*"
 
 [dev-packages]
 
