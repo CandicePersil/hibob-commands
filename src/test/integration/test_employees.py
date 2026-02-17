@@ -12,19 +12,16 @@ def test_validate_employee_data() -> None:
     # GIVEN
     input = {
         "payroll": {
-                "employment": {
-                        "type": "Permanent",
-                }
+            "employment": {
+                "type": "Permanent",
+            }
         },
         "custom": {
-                "field_1725354995510": "Noemie",
-                "field_1725355007237": "Star",
+            "field_1725354995510": "Noemie",
+            "field_1725355007237": "Star",
         },
         "email": "noemie.start@random.ex",
-        "work": {
-                "startDate": "2025-10-02",
-                "site": "France"
-        },
+        "work": {"startDate": "2025-10-02", "site": "France"},
     }
 
     # WHEN
@@ -53,19 +50,16 @@ def test_validate_multiple_employees_data() -> None:
     # GIVEN
     input = {
         "payroll": {
-                "employment": {
-                        "type": "Permanent",
-                }
+            "employment": {
+                "type": "Permanent",
+            }
         },
         "custom": {
-                "field_1725354995510": "Noemie",
-                "field_1725355007237": "Star",
+            "field_1725354995510": "Noemie",
+            "field_1725355007237": "Star",
         },
         "email": "noemie.start@random.ex",
-        "work": {
-                "startDate": "2025-10-02",
-                "site": "France"
-        },
+        "work": {"startDate": "2025-10-02", "site": "France"},
     }
 
     list_of_employees: list[Employee] = []
@@ -99,6 +93,7 @@ def test_validate_multiple_employees_data() -> None:
 
     # THEN
     assert employees == CompanyEmployees(employees=expected_employees)
+
 
 def test_extract_employees_data() -> None:
     # GIVEN
@@ -135,7 +130,7 @@ def test_extract_employees_data() -> None:
                     field_1725355007237="Renolds",
                 ),
                 email="mimi.renolds@example.ex",
-            ), 
+            ),
         ]
     )
 

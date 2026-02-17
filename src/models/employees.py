@@ -1,5 +1,12 @@
 from datetime import date, datetime
-from pydantic import BaseModel, Field, field_validator, field_serializer, model_serializer, SerializerFunctionWrapHandler
+from pydantic import (
+    BaseModel,
+    Field,
+    field_validator,
+    field_serializer,
+    model_serializer,
+    SerializerFunctionWrapHandler,
+)
 
 
 class Work(BaseModel):
@@ -15,15 +22,19 @@ class Work(BaseModel):
     def serialize_start_date(self, value: date) -> str:
         return value.strftime("%d/%m/%Y")
 
+
 class Employment(BaseModel):
     contract_type: str = Field(alias="type")
+
 
 class Payroll(BaseModel):
     employment: Employment = Field()
 
+
 class Custom(BaseModel):
     first_name: str = Field(alias="field_1725354995510")
     last_name: str = Field(alias="field_1725355007237")
+
 
 class Employee(BaseModel):
     payroll: Payroll = Field()
@@ -32,7 +43,9 @@ class Employee(BaseModel):
     email: str = Field()
 
     @model_serializer(mode="wrap")
-    def serialize_model(self, handler: SerializerFunctionWrapHandler) -> dict[str, object]:
+    def serialize_model(
+        self, handler: SerializerFunctionWrapHandler
+    ) -> dict[str, object]:
         serialized = handler(self)
         return {
             "email": self.email,

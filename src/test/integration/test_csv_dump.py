@@ -31,7 +31,7 @@ def test_csv_dump(tmp_path) -> None:
             "professional_category": None,
             "subsidy_level": None,
             "area": "Lyon",
-        }
+        },
     ]
 
     # WHEN

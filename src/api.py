@@ -20,7 +20,7 @@ class HibobApiClient:
 
     def __init__(self) -> None:
         self._id: str = BaseConfig.get_config("id")
-        self._pwd: str  = BaseConfig.get_config("pwd")
+        self._pwd: str = BaseConfig.get_config("pwd")
 
     def call_search_api(self) -> requests.Response:
         basic_auth = HTTPBasicAuth(self._id, self._pwd)
@@ -33,6 +33,7 @@ class HibobApiClient:
             auth=basic_auth,
         )
 
+
 def extract_employees_data() -> list[dict[str, str | None]]:
     hibob_api = HibobApiClient()
     search_response = hibob_api.call_search_api()
@@ -41,4 +42,6 @@ def extract_employees_data() -> list[dict[str, str | None]]:
         search_results = search_response.json()
         return search_results.get("employees", [])
     else:
-        raise Exception(f"API request failed with status code {search_response.status_code}")
+        raise Exception(
+            f"API request failed with status code {search_response.status_code}"
+        )

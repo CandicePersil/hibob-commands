@@ -5,7 +5,6 @@ dotenv.load_dotenv(dotenv_path="data/.env")
 
 
 class BaseConfig:
-
     _service_id: str = os.getenv("SERVICE_ID", "")
     _service_password: str = os.getenv("SERVICE_PASSWORD", "")
 

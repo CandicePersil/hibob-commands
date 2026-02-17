@@ -1,5 +1,6 @@
 import csv
 
+
 class CsvWriter:
     def __init__(self, file_path: str) -> None:
         self.file_path = file_path
@@ -22,6 +23,8 @@ class CsvWriter:
             return
 
         with open(self.file_path, "w", newline="") as csv_file:
-            writer = csv.DictWriter(csv_file, delimiter=",", fieldnames=self.field_names)
+            writer = csv.DictWriter(
+                csv_file, delimiter=",", fieldnames=self.field_names
+            )
             writer.writeheader()
             writer.writerows(lines)
