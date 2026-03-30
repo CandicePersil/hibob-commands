@@ -8,6 +8,10 @@ from pydantic import (
     SerializerFunctionWrapHandler,
 )
 
+CONTRACT_TYPE_MAPPING: dict[str, str] = {
+    "Permanent": "CDI",
+}
+
 
 class Work(BaseModel):
     start_date: date = Field(alias="startDate")
@@ -53,7 +57,10 @@ class Employee(BaseModel):
             "last_name": self.custom.last_name,
             "start_date": serialized["work"]["start_date"],
             "end_date": None,
-            "contract_type": self.payroll.employment.contract_type,
+            "contract_type": CONTRACT_TYPE_MAPPING.get(
+                self.payroll.employment.contract_type,
+                self.payroll.employment.contract_type,
+            ),
             "date_of_birth": None,
             "phone_number": None,
             "professional_category": None,

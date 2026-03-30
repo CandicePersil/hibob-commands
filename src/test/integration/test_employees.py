@@ -140,7 +140,7 @@ def test_extract_employees_data() -> None:
         "employees": [
             {
                 "area": "Paris",
-                "contract_type": "Permanent",
+                "contract_type": "CDI",
                 "date_of_birth": None,
                 "email": "noemie.star@example.ex",
                 "end_date": None,
@@ -152,7 +152,7 @@ def test_extract_employees_data() -> None:
             },
             {
                 "area": "London",
-                "contract_type": "Permanent",
+                "contract_type": "CDI",
                 "date_of_birth": None,
                 "email": "mimi.renolds@example.ex",
                 "end_date": None,
