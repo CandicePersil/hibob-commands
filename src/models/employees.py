@@ -57,9 +57,9 @@ class Employee(BaseModel):
             "date_of_birth": None,
             "phone_number": None,
             "professional_category": None,
-            "subsidy_level": None,
             "area": self.work.area,
         }
+
 
 class CompanyEmployees(BaseModel):
     employees: list[Employee]

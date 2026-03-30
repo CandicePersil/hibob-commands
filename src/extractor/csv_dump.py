@@ -14,7 +14,6 @@ class CsvWriter:
             "date_of_birth",
             "phone_number",
             "professional_category",
-            "subsidy_level",
             "area",
         ]
 

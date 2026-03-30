@@ -149,7 +149,6 @@ def test_extract_employees_data() -> None:
                 "phone_number": None,
                 "professional_category": None,
                 "start_date": "02/10/2025",
-                "subsidy_level": None,
             },
             {
                 "area": "London",
@@ -162,7 +161,6 @@ def test_extract_employees_data() -> None:
                 "phone_number": None,
                 "professional_category": None,
                 "start_date": "01/10/2025",
-                "subsidy_level": None,
             },
         ]
     }

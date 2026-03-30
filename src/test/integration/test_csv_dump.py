@@ -16,7 +16,6 @@ def test_csv_dump(tmp_path) -> None:
             "date_of_birth": None,
             "phone_number": None,
             "professional_category": None,
-            "subsidy_level": None,
             "area": "Paris",
         },
         {
@@ -29,7 +28,6 @@ def test_csv_dump(tmp_path) -> None:
             "date_of_birth": None,
             "phone_number": None,
             "professional_category": None,
-            "subsidy_level": None,
             "area": "Lyon",
         },
     ]
@@ -43,9 +41,9 @@ def test_csv_dump(tmp_path) -> None:
     with open(tmp_path / "test.csv", "r") as csv_file:
         csv_content = csv_file.readlines()
         assert csv_content == [
-            "email,first_name,last_name,start_date,end_date,contract_type,date_of_birth,phone_number,professional_category,subsidy_level,area\n",
-            "clara.doxal@test.fr,Clara,Doxal,01/12/2025,,Permanent,,,,,Paris\n",
-            "mateo.portu@test.fr,Mateo,Portu,13/09/2024,01/31/2025,CDI,,,,,Lyon\n",
+            "email,first_name,last_name,start_date,end_date,contract_type,date_of_birth,phone_number,professional_category,area\n",
+            "clara.doxal@test.fr,Clara,Doxal,01/12/2025,,Permanent,,,,Paris\n",
+            "mateo.portu@test.fr,Mateo,Portu,13/09/2024,01/31/2025,CDI,,,,Lyon\n",
         ]
 
     # CLEANUP
